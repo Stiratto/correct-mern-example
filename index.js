@@ -11,7 +11,13 @@ app.use(cors())
 console.log('PORT:', process.env.PORT);
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Conexión a MongoDB establecida');
+  })
+  .catch((error) => {
+    console.error('Error al conectar a MongoDB:', error);
+  });
 
 
 app.get("/getUser", (req, res) => {
