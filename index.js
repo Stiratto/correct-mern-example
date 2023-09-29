@@ -8,7 +8,7 @@ require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect('mongodb+srv://moranbusiness199:RtRCdty3xmLM5lTH@cluster0.4fha5ts.mongodb.net/correct-mern-example?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGODB_URI)
 
 app.get("/getUser", (req, res) => {
     UserModel.find({}).then(result => {
