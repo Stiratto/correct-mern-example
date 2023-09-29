@@ -8,7 +8,11 @@ require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 
+console.log('PORT:', process.env.PORT);
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
+
 mongoose.connect(process.env.MONGODB_URI)
+
 
 app.get("/getUser", (req, res) => {
     UserModel.find({}).then(result => {
